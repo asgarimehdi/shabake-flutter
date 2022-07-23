@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:shabake/presentation/Opportuniies/opportunities_page.dart';
+import 'package:shabake/router/route_constants.dart';
+import 'package:shabake/router/routers.dart';
 
 void main() {
   runApp(Shabake());
@@ -10,11 +11,12 @@ class Shabake extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Shabake Behdasht',
-      showSemanticsDebugger: false,
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
           primarySwatch: Colors.blue,
           visualDensity: VisualDensity.adaptivePlatformDensity),
-      home: OpportunitiesPage(),
+      onGenerateRoute: Routers.onGenerateRoute,
+      initialRoute: homeRoute,
     );
   }
 }
