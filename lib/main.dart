@@ -7,7 +7,6 @@ void main() {
   runApp(Shabake());
 }
 
-
 class Shabake extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -18,7 +17,7 @@ class Shabake extends StatelessWidget {
           primarySwatch: brandingColor,
           visualDensity: VisualDensity.adaptivePlatformDensity),
       onGenerateRoute: Routers.onGenerateRoute,
-      initialRoute: homeRoute,
+      initialRoute: signInRoute,
     );
   }
 }

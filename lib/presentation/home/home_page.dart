@@ -5,14 +5,14 @@ import 'package:shabake/presentation/favorites/favorites_page.dart';
 import 'package:shabake/presentation/forum/questions_page.dart';
 
 class HomePage extends StatefulWidget {
-  HomePage({Key? key}) : super(key: key);
+  const HomePage({Key? key}) : super(key: key);
 
   @override
   State<HomePage> createState() => _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> {
-  PageController _pageController = PageController();
+  final PageController _pageController = PageController();
   final List<Widget> _screens = [
     OpportunitiesPage(),
     QuestionsPage(),
@@ -30,7 +30,6 @@ class _HomePageState extends State<HomePage> {
   void _onItemTapped(int itemIndex) {
     setState(() {
       _pageController.jumpToPage(itemIndex);
-      print(_selectedIndex);
     });
   }
 
@@ -38,10 +37,10 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: PageView(
-        children: _screens,
         controller: _pageController,
         onPageChanged: _onPageChanged,
         physics: const NeverScrollableScrollPhysics(),
+        children: _screens,
       ),
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
