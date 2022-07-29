@@ -13,16 +13,24 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   PageController _pageController = PageController();
-  List<Widget> _screens = [
+  final List<Widget> _screens = [
     OpportunitiesPage(),
     QuestionsPage(),
     FavoritesPage(),
     AccountPage()
   ];
 
-  void _onItemTapped(int index) {
+  int _selectedIndex = 0;
+  void _onPageChanged(int pageIndex) {
     setState(() {
-      _pageController.jumpToPage(index);
+      _selectedIndex = pageIndex;
+    });
+  }
+
+  void _onItemTapped(int itemIndex) {
+    setState(() {
+      _pageController.jumpToPage(itemIndex);
+      print(_selectedIndex);
     });
   }
 
@@ -32,14 +40,17 @@ class _HomePageState extends State<HomePage> {
       body: PageView(
         children: _screens,
         controller: _pageController,
-        // physics: NeverScrollableScrollPhysics,
+        onPageChanged: _onPageChanged,
+        physics: const NeverScrollableScrollPhysics(),
       ),
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
         onTap: _onItemTapped,
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: Icon(Icons.home),
+            icon: Icon(
+              Icons.home,
+            ),
             label: 'Opportunities',
           ),
           BottomNavigationBarItem(
@@ -55,6 +66,10 @@ class _HomePageState extends State<HomePage> {
             label: 'Account',
           ),
         ],
+        //backgroundColor: Colors.black, // <-- This works for fixed
+        selectedItemColor: Colors.blue,
+        unselectedItemColor: Colors.grey,
+        currentIndex: _selectedIndex,
       ),
     );
   }
