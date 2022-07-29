@@ -67,7 +67,7 @@ class _HomePageState extends State<HomePage> {
           ),
         ],
         //backgroundColor: Colors.black, // <-- This works for fixed
-        selectedItemColor: Colors.blue,
+        selectedItemColor: Theme.of(context).primaryColor,
         unselectedItemColor: Colors.grey,
         currentIndex: _selectedIndex,
       ),

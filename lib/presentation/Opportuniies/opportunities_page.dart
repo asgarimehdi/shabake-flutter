@@ -13,7 +13,7 @@ class _OpportunitiesPageState extends State<OpportunitiesPage>
     super.build(context);
     return Scaffold(
       appBar: AppBar(
-        title: Text('Opportunities'),
+        title: const Text('Opportunities'),
       ),
     );
   }

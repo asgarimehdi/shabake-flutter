@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:shabake/router/route_constants.dart';
 import 'package:shabake/router/routers.dart';
+import 'package:shabake/values/branding_color.dart';
 
 void main() {
   runApp(Shabake());
 }
+
 
 class Shabake extends StatelessWidget {
   @override
@@ -13,7 +15,7 @@ class Shabake extends StatelessWidget {
       title: 'Shabake Behdasht',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-          primarySwatch: Colors.blue,
+          primarySwatch: brandingColor,
           visualDensity: VisualDensity.adaptivePlatformDensity),
       onGenerateRoute: Routers.onGenerateRoute,
       initialRoute: homeRoute,
