@@ -39,6 +39,7 @@ class _SignInPageState extends State<SignInPage> {
               ),
               buildSizedBox(15),
               TextFormField(
+                obscureText: true,
                 decoration: InputDecoration(
                   prefixIcon: Icon(Icons.lock),
                   hintText: "Enter your password",
