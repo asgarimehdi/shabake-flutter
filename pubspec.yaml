@@ -30,7 +30,7 @@ dependencies:
   flutter:
     sdk: flutter
   dio: ^4.0.6
-  states_rebuilder: ^6.1.0+1
+  #states_rebuilder: ^6.1.0+1
   shared_preferences: ^2.0.15
   flutter_secure_storage: ^5.1.0
 

@@ -1,6 +1,6 @@
 class SignInFormModel {
-  late String email;
-  late String password;
+   String? email;
+   String? password;
 
   void setEmail(String email) {
     if (!validateEmail(email)) {
@@ -20,6 +20,9 @@ class SignInFormModel {
     return RegExp(
             r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
         .hasMatch(email);
+  }
+  bool validatePassword(String password) {
+    return  (password.length > 6);
   }
 }
 
