@@ -1,8 +1,11 @@
 import 'package:shabake/application/classes/common_error.dart';
 
-class SignInFormModel {
-   String? email;
-   String? password;
+class SignUpFormModel {
+  String? firstName;
+  String? lastName;
+  String? email;
+  String? password;
+  String? passwordConfirmation;
 
   void setEmail(String email) {
     if (!validateEmail(email)) {
@@ -23,9 +26,8 @@ class SignInFormModel {
             r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
         .hasMatch(email);
   }
+
   bool validatePassword(String password) {
-    return  (password.length > 6);
+    return (password.length > 6);
   }
 }
-
-

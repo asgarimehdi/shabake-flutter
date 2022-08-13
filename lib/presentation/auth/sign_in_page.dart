@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shabake/application/models/sign_in_form_model.dart';
+import 'package:shabake/router/route_constants.dart';
 import 'package:shabake/values/images.dart';
 
 class SignInPage extends StatefulWidget {
@@ -82,7 +83,10 @@ class _SignInPageState extends State<SignInPage> {
                       // If the form is valid, display a snackbar. In the real world,
                       // you'd often call a server or save the information in a database.
                       ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(content: Text('Processing Data')),
+                        const SnackBar(
+                          content: Text('Processing Data'),
+                          backgroundColor: Colors.green,
+                        ),
                       );
                     }
                   },
@@ -101,7 +105,9 @@ class _SignInPageState extends State<SignInPage> {
                       child: Text("ثبت نام",
                           style:
                               TextStyle(color: Theme.of(context).primaryColor)),
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.pushNamed(context, signUpRoute);
+                      },
                     ),
                   ],
                 )
