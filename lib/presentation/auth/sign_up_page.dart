@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:shabake/application/models/sign_up_form_model.dart';
+import 'package:shabake/application/models/auth/sign_up_form_model.dart';
 import 'package:shabake/router/route_constants.dart';
 import 'package:shabake/values/images.dart';
 

@@ -1,11 +1,9 @@
-import 'package:shabake/application/classes/common_error.dart';
+import 'package:dio/dio.dart';
+import 'package:shabake/application/classes/errors/common_error.dart';
 
-class SignUpFormModel {
-  String? firstName;
-  String? lastName;
+class SignInFormModel {
   String? email;
   String? password;
-  String? passwordConfirmation;
 
   void setEmail(String email) {
     if (!validateEmail(email)) {
@@ -29,5 +27,12 @@ class SignUpFormModel {
 
   bool validatePassword(String password) {
     return (password.length > 6);
+  }
+
+  submitSignIn() async {
+    Dio dio = new Dio();
+    Response response = await dio.post(
+        "http://10.100.252.137:81/api/auth/signin",
+        data: {"email": email, "password": password});
   }
 }

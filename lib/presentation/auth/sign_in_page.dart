@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:shabake/application/models/sign_in_form_model.dart';
+import 'package:shabake/application/models/auth/sign_in_form_model.dart';
 import 'package:shabake/router/route_constants.dart';
 import 'package:shabake/values/images.dart';
 
@@ -13,6 +13,8 @@ class SignInPage extends StatefulWidget {
 class _SignInPageState extends State<SignInPage> {
   final _formKey = GlobalKey<FormState>();
   final _signInFormModel = SignInFormModel();
+  final TextEditingController _pass = TextEditingController();
+  final TextEditingController _email = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -41,6 +43,7 @@ class _SignInPageState extends State<SignInPage> {
                     }
                     return null;
                   },
+                  controller: _email,
                   decoration: InputDecoration(
                     prefixIcon: Icon(Icons.email),
                     hintText: "Enter your email",
@@ -57,6 +60,7 @@ class _SignInPageState extends State<SignInPage> {
                     }
                     return null;
                   },
+                  controller: _pass,
                   obscureText: true,
                   decoration: InputDecoration(
                     prefixIcon: Icon(Icons.lock),
@@ -80,7 +84,9 @@ class _SignInPageState extends State<SignInPage> {
                   onPressed: () {
                     // Validate returns true if the form is valid, or false otherwise.
                     if (_formKey.currentState!.validate()) {
-                      Navigator.pushNamed(context, homeRoute);
+                      print(_pass.text);
+                      //_SignInPageState.setState((_SignInPageState)=>_SignInPageState.submitSignIn());
+                      //Navigator.pushNamed(context, homeRoute);
                     }
                   },
                   height: 55,
