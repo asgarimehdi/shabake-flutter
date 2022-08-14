@@ -13,6 +13,8 @@ class SignUpPage extends StatefulWidget {
 class _SignUpPageState extends State<SignUpPage> {
   final _formKey = GlobalKey<FormState>();
   final _signInFormModel = SignUpFormModel();
+  final TextEditingController _pass = TextEditingController();
+  final TextEditingController _confirmPass = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,7 +25,7 @@ class _SignUpPageState extends State<SignUpPage> {
         automaticallyImplyLeading: false,
       ),
       body: Container(
-          padding: EdgeInsets.all(16.0),
+          padding: EdgeInsets.all(10.0),
           child: Form(
             key: _formKey,
             child: ListView(
@@ -89,10 +91,31 @@ class _SignUpPageState extends State<SignUpPage> {
                     }
                     return null;
                   },
+                  controller: _pass,
                   obscureText: true,
                   decoration: InputDecoration(
                     prefixIcon: Icon(Icons.lock),
                     hintText: "Enter your password",
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(30),
+                    ),
+                  ),
+                ),
+                buildSizedBox(15),
+                TextFormField(
+                  validator: (value) {
+                    if (_confirmPass.text.isEmpty) {
+                      return 'Please enter passwordConfirmation';
+                    } else if (_confirmPass.text != _pass.text) {
+                      return 'Please enter valid passwordConfirmation';
+                    }
+                    return null;
+                  },
+                  controller: _confirmPass,
+                  obscureText: true,
+                  decoration: InputDecoration(
+                    prefixIcon: Icon(Icons.compare),
+                    hintText: "Enter your passwordConfirmation",
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(30),
                     ),
@@ -112,14 +135,13 @@ class _SignUpPageState extends State<SignUpPage> {
                   onPressed: () {
                     // Validate returns true if the form is valid, or false otherwise.
                     if (_formKey.currentState!.validate()) {
-                      // If the form is valid, display a snackbar. In the real world,
-                      // you'd often call a server or save the information in a database.
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(
-                          content: Text('Processing Data'),
-                          backgroundColor: Colors.green,
-                        ),
-                      );
+                      // ScaffoldMessenger.of(context).showSnackBar(
+                      //   const SnackBar(
+                      //     content: Text('Processing Data'),
+                      //     backgroundColor: Colors.green,
+                      //   ),
+                      // );
+                      Navigator.pushNamed(context, homeRoute);
                     }
                   },
                   height: 55,
