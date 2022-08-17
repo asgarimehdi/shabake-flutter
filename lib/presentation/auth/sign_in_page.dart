@@ -84,7 +84,10 @@ class _SignInPageState extends State<SignInPage> {
                   onPressed: () {
                     // Validate returns true if the form is valid, or false otherwise.
                     if (_formKey.currentState!.validate()) {
-                      print(_pass.text);
+                      _signInFormModel.setEmail(_email.text);
+                      _signInFormModel.setPassword(_pass.text);
+                      _signInFormModel.submitSignIn();
+                      //print(_signInFormModel.email);
                       //_SignInPageState.setState((_SignInPageState)=>_SignInPageState.submitSignIn());
                       //Navigator.pushNamed(context, homeRoute);
                     }

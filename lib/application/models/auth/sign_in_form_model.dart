@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:shabake/application/classes/errors/common_error.dart';
+import 'package:shabake/base_url.dart';
 
 class SignInFormModel {
   String? email;
@@ -31,8 +32,9 @@ class SignInFormModel {
 
   submitSignIn() async {
     Dio dio = new Dio();
-    Response response = await dio.post(
-        "http://10.100.252.137:81/api/auth/signin",
-        data: {"email": email, "password": password});
+    dio.options.baseUrl = BASE_URL;
+    Response response = await dio
+        .post("/api/auth/login", data: {"email": email, "password": password});
+    print(response);
   }
 }
